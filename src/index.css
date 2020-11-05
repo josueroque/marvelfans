@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Grid{
+  display: grid ;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 5vw;
+}
+
+.Card{
+padding: 5px;
+}
