@@ -20,14 +20,17 @@ export const getCharactersFailure=error=>({
     payload:error
 });
 
-export function getCharactersAction(){
+export function getCharactersAction(filter){
     return async (dispatch) =>{
         dispatch(startGetCharacters());
         try{
-            const response= await getCharacters();
+           // console.log(filter);
+            const response= await getCharacters(filter);
+           // console.log(response);
             dispatch(getCharactersSuccess(response.data.data.results));
         }
         catch(error){
+            //console.error(error);
             dispatch(getCharactersFailure(error));
         }
     }

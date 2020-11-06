@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import{Button,Card,CardActionArea,CardMedia,
     CardContent,Typography,CardActions} from '@material-ui/core';
+ 
 
- function CardItem(props){
+ function CharacterDetail(props){
    
-     return(
-    <Card className="Card">
+     useEffect(()=>{
+  
+       if (!props.location.state){
+       
+            props.history.push("/"); 
+       }
+    },[])
+  
+    return(
+   
+    <Card className="CardDetail">
+         {props.location.state?    
     <CardActionArea>
         <CardMedia
         component="img"
-        alt={props.values.name}
-        height="180"
+        alt={props.location.state.item.name}
+        height="300"
         width="320"
-        image={props.values.thumbnail.path+'.'+props.values.thumbnail.extension}
-        title={props.name}
+        image={props.location.state.item.thumbnail.path+'.'+props.location.state.item.thumbnail.extension}
+        title={props.location.state.item.name}
         >
         </CardMedia>
         <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-                {props.values.name}
+                { props.location.state.item.name} 
             </Typography>
         </CardContent>
             <CardActions>
@@ -29,11 +40,11 @@ import{Button,Card,CardActionArea,CardMedia,
                 Learn More
                 </Button>
             </CardActions>
-        </CardActionArea>  
-          
+        </CardActionArea> 
+        :''}   
     </Card>
     )
 
  }   
 
- export default CardItem;
+ export default CharacterDetail;

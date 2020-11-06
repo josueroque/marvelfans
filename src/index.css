@@ -21,3 +21,24 @@ code {
 .Card{
 padding: 5px;
 }
+
+.FilterGrid{
+  display: grid ;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  margin: 5vw;
+}
+
+.SearchText{
+  padding: 2px  !important;
+}
+
+.Link{
+     text-decoration: none;
+}
+
+.CardDetail{
+    margin-left: 0vw;
+    margin-top: 2vw;
+    width: 50vw;
+    height:40vw !important ;
+}

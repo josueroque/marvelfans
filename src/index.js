@@ -4,11 +4,24 @@ import './index.css';
 import App from './components/App';
 import {store} from './store/store';
 import { Provider } from 'react-redux';
-
+import {createMuiTheme} from '@material-ui/core/styles';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#2196f3',
+        },
+        secondary: {
+            main: '#0d47a1',
+        },
+    },
+});
 ReactDOM.render(
   <React.StrictMode>
      <Provider store={store}>
+     <MuiThemeProvider theme={theme}>
         <App />
+     </MuiThemeProvider>   
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
