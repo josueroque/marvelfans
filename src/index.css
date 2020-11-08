@@ -12,11 +12,13 @@ code {
     monospace;
 }
 
+
 .Grid{
   display: grid ;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: 5vw;
 }
+
 
 .Card{
 padding: 5px;
@@ -26,6 +28,7 @@ padding: 5px;
   display: grid ;
   grid-template-columns: 1fr 1fr  ;
   margin-left: 5vw;
+  margin-top: 8vw;
 }
 
 .SearchText{
@@ -53,3 +56,138 @@ padding: 5px;
   margin-top: 2vw !important;
   margin-left:40vw !important
 }
+.LinkTab{
+  text-decoration: none;
+}
+
+
+/* NAVBAR HEADER */
+:root {
+  --max-width: 900px;
+  --text-color: #222222;
+  --bg-color: white;
+  --bg-inverted: #EFEFFE;
+
+}
+.navbar {
+  background-color: #9b0000;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  margin-bottom: 1vw !important;
+}
+
+.navbar-list {
+  list-style-type: none;
+  margin: 0;
+
+  flex: 1 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-item > a {
+  text-decoration: none;
+  color: white;
+  padding: 1rem;
+  display: block;
+}
+
+.navbar-item > a:hover {
+  color: azure;
+  background-color: #222222;
+  transition: all 1s ease-in;
+}
+
+.logo {
+  /* align-self: center; */
+  flex-shrink: 0;
+  flex-grow: 1;
+  flex: 150px;
+  margin-left: 5vw;
+
+  font-family: juego-tronos, 'Times New Roman', Times, serif;
+  /* font-variant: small-caps; */
+}
+
+#burger-checkbox {
+  display: none;
+}
+
+@media all and (max-width: 768px) {
+  .FilterGrid{
+    margin-top: 15vw;
+  }
+  .navbar {
+    width: 40%;
+  }
+
+  .navbar-list {
+    display: none;
+    flex-direction: column;
+    margin-top: 51px;
+    height: 100vh;
+    justify-content: flex-start;
+    background-color: #9b0000;
+    padding-left: 0;
+  }
+  
+  .navbar-list li a {
+    color: var(--bg-color);
+    text-align: center;
+  }
+
+  .navbar .logo {
+    position: fixed;
+    top: 0;
+    left: 5vw;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    height: 52px;
+    line-height: 51px;
+    font-size: 1.5em;
+    margin: 0;
+  }
+
+  #burger-checkbox {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 51px;
+    height: 51px;
+    opacity: 0;
+  }
+
+  #burger-checkbox:checked ~ .navbar-list {
+    display: inherit;
+  }
+  
+  .burger-label {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 51px;
+    height: 51px;
+    font-size: 42px;
+  }
+
+  .burger-label:before {
+    content: "";
+    position: absolute;
+    background: gray;
+    width: 1em;
+    height: .15em;
+    left: .1em;
+    top: .25em;
+    box-shadow:
+      0 .25em 0 0 gray,
+      0 .5em 0 0 gray;
+  }  
+}/*  NAVBAR END */

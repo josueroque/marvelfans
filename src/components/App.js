@@ -13,7 +13,7 @@ render(){
       <Switch>
         <Route exact path='/characters' component={Characters} />
         <Route exact path='/characters/:id' component={CharacterDetail} />
-        <Route exact path='/' component={Characters} />
+        <Route exact path='/' component={Home} />
       </Switch>
     </Router>
   );

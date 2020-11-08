@@ -9,6 +9,7 @@ import CardItem from './CardItem';
 import Loader from './Loader';
 import Alert from './Alert';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import Menu from './Menu';
 
 
 function Characters(props){ 
@@ -69,11 +70,11 @@ function Characters(props){
         }
       
     }
-
+console.log(name);
     return (
                  
             <Fragment>
-             
+             <Menu></Menu>
             <Grid className="FilterGrid">
                 <TextField 
                     className="SearchText" 
@@ -85,17 +86,7 @@ function Characters(props){
                     value={name}
                     onChange={handleChange}
                 />
-                {/* <TextField 
 
-                    className="SearchText" 
-                    id="comics"
-                    name="comics"
-                    label="Filter by comics" 
-                    type="search" 
-                    variant="filled"
-                    value={comics}
-                    onChange={handleChange}
-                /> */}
                       <Autocomplete
                         {...comicsList}
                         id="story"
