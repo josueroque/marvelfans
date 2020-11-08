@@ -24,8 +24,8 @@ padding: 5px;
 
 .FilterGrid{
   display: grid ;
-  grid-template-columns: 1fr 1fr 1fr 1fr ;
-  margin: 5vw;
+  grid-template-columns: 1fr 1fr  ;
+  margin-left: 5vw;
 }
 
 .SearchText{
@@ -44,4 +44,12 @@ padding: 5px;
 }
 .Loader{
   margin-left: 45vw;
+}
+.StorySearch{
+  margin-left:5vw !important; 
+}
+.ClearButton{
+  width:25vw;
+  margin-top: 2vw !important;
+  margin-left:40vw !important
 }

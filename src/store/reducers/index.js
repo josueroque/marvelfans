@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import charactersReducers from './characters';
+import charactersReducer from './characters';
+import storiesReducer from './stories';
+import comicsReducer from './comics';
 
 
 export default combineReducers({
-  characters: charactersReducers
+  characters: charactersReducer,
+  stories:storiesReducer,
+  comics:comicsReducer
 
 });
