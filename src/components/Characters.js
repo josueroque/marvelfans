@@ -1,9 +1,12 @@
 import React,{Fragment, useEffect, useState} from 'react';
 import{useSelector,useDispatch} from 'react-redux';
-import {Grid,TextField,Button} from '@material-ui/core';
-import CardItem from './CardItem';
-import{getCharactersAction} from '../store/actions/characters';
 import {Link} from 'react-router-dom';
+import {Grid,TextField,Button} from '@material-ui/core';
+import{getCharactersAction} from '../store/actions/characters';
+import CardItem from './CardItem';
+import Loader from './Loader';
+
+
 function Characters(props){ 
 
     const dispatch=useDispatch();
@@ -86,7 +89,7 @@ function Characters(props){
             </Grid>
             <Grid className="Grid" >
 
-                {loading===true?<div>Loading...</div>:
+                {loading===true?<Loader className="Loader">  </Loader>:
                     characters.length>0? characters.map(item=>
                         <Link className="Link"  to={{
                             pathname: `/characters/${item.id}` , 

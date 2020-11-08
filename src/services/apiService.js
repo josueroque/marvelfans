@@ -35,7 +35,6 @@ export const getComics=async()=>{
     let queryUrl=`${baseUrl}comics?apikey=${apiKey}&hash=${hash}&ts=${ts}&limit=100`;
     const response= await axios.get(queryUrl);
     return response;  
-
 }
 
 export const getComic=async(comic)=>{
