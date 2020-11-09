@@ -4,12 +4,13 @@ import {
     GET_CHARACTERS_FAILURE
 } from '../types';
 
-const initialState={characters:[],loading:false,error:false};
+const initialState={characters:[],loading:false,error:false,cachedResults:[]};
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function(state=initialState,action) {
     switch(action.type){
         case START_GET_CHARACTERS:
+
             return{
                 ...state,
                 loading:true,
@@ -17,8 +18,13 @@ export default function(state=initialState,action) {
                 characters:[]
             }
         case GET_CHARACTERS_SUCCESS:
+            
             return{
+               
                 ...state,
+                cachedResults: state.cachedResults.length>0?
+                    [...state.cachedResults,{results:action.payload}]
+                    :[action.payload],
                 loading:false,
                 error:false,
                 characters:action.payload

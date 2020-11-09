@@ -6,7 +6,7 @@ const apiKey='1cb3a2470c17d59344f1fca46ab0e4c9';
 
 export const getCharacters=async(filter)=>{
     
-    let queryUrl=`${baseUrl}characters?apikey=${apiKey}&hash=${hash}&ts=${ts}&limit=24`;
+    let queryUrl=`${baseUrl}characters?apikey=${apiKey}&hash=${hash}&ts=${ts}&limit=8`;
     
     if (filter.name) queryUrl=`${queryUrl}&nameStartsWith=${filter.name}`;
       
@@ -21,7 +21,7 @@ export const getCharacters=async(filter)=>{
 } 
 
 export const getComics=async()=>{
-    let queryUrl=`${baseUrl}comics?apikey=${apiKey}&hash=${hash}&ts=${ts}&limit=20`;
+    let queryUrl=`${baseUrl}comics?apikey=${apiKey}&hash=${hash}&ts=${ts}&limit=100`;
     const response= await axios.get(queryUrl);
     return response;  
 }
@@ -33,16 +33,7 @@ export const getComic=async(comic)=>{
 }
 
 export const getStories=async(filter)=>{
-    let queryUrl=`${baseUrl}stories?apikey=${apiKey}&hash=${hash}&ts=${ts}&limit=20`;
-    // if (filter.comics){
-    //     const comic=await getComic(filter.comics);
-    //     if( comic.status===200){
-    //         let comicId;
-    //         if (comic.data.data.results.length>0) comicId=comic.data.data.results[0].id; 
-    //         queryUrl=`${queryUrl}&comics=${comicId}`;
-    //     }
-        
-    // } 
+    let queryUrl=`${baseUrl}stories?apikey=${apiKey}&hash=${hash}&ts=${ts}&limit=100`;
    
     const response= await axios.get(queryUrl);
 

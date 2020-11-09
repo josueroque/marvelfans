@@ -5,7 +5,7 @@ import{getStoriesAction} from '../store/actions/stories';
 import{getComicsAction} from '../store/actions/comics';
 import{getCharactersAction} from '../store/actions/characters';
 import Characters from './Characters';
-import CharacterDetail from './CharacterDetail';
+import CharacterDetail from './CharacterDetail'; 
 import Home from './Home';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 

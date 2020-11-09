@@ -22,18 +22,18 @@ function Characters(props){
     const [comic,setComic]=useState(null);
     const [story,setStory]=useState(null);
     
-    const [storiesList] = useState( {
+    const storiesList ={
         options: stories,
         getOptionLabel: (option) => option.title,
-      });
+      };
     
-      const [comicsList] = useState({
+      const comicsList = {
         options: comics,
         getOptionLabel: (option) => option.title,
-    });
+    };
 
-    
-    useEffect(()=>{
+
+        useEffect(()=>{
         console.log(comic);
         let comicValue=comic ?comic.id:null;
         let storyValue=story ?story.id:null;
@@ -62,6 +62,12 @@ function Characters(props){
         }
       
     }
+
+    const memoMenu=useMemo(()=>{
+        return <Menu></Menu>
+    }
+    ,[])
+
     const comicsComponent=useMemo(()=>{
         
         return <Autocomplete
@@ -83,7 +89,7 @@ function Characters(props){
             
             />}
         />  
-    },[comic])
+    },[comic,comics])
 
     const storiesComponent=useMemo(()=>{
 
@@ -105,12 +111,12 @@ function Characters(props){
                                                            
                         />}
                     /> 
-    },[story])
+    },[story,stories])
 
     return (
                  
             <Fragment>
-             <Menu></Menu>
+            {memoMenu}
             <Grid className="FilterGrid">
                 <TextField 
                     className="SearchText" 
@@ -122,47 +128,9 @@ function Characters(props){
                     value={name}
                     onChange={handleChange}
                 />
-                {/* <Autocomplete
-                    {...comicsList}
-                    id="story"
-                    value={comic}
-                    className="SearchText" 
-                    onChange={(event, newValue) => {
-                    setComic(newValue);
-                    }}
-                        renderInput={(params) =>
-                        <TextField 
-                            {...params} 
-                            key={params.id}
-                            type="search" 
-                            variant="filled"
-                            label="Search by Comic"
-                            
-                        
-                        />}
-                    />   */}
                    {comicsComponent}
                 </Grid>
                    {storiesComponent}
-                      {/* <Autocomplete
-                        {...storiesList}
-                        id="story"
-                        value={story}
-                        className="StorySearch"
-                        onChange={(event, newValue) => {
-                        setStory(newValue);
-                        }}
-                            renderInput={(params) =>
-                            <TextField 
-                                {...params} 
-                                key={params.id}
-                                type="search" 
-                                variant="filled"
-                                label="Search by Story"
-                                                           
-                            />}
-                         /> */}
-               
 
              <Button className="ClearButton" onClick={reset} color="primary" variant="contained">Clear </Button>
             <Grid className="Grid" >
