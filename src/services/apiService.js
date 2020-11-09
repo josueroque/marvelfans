@@ -5,7 +5,7 @@ const ts='1';
 const apiKey='1cb3a2470c17d59344f1fca46ab0e4c9';
 
 export const getCharacters=async(filter)=>{
-    console.log(filter);  
+    
     let queryUrl=`${baseUrl}characters?apikey=${apiKey}&hash=${hash}&ts=${ts}&limit=24`;
     
     if (filter.name) queryUrl=`${queryUrl}&nameStartsWith=${filter.name}`;
@@ -13,9 +13,9 @@ export const getCharacters=async(filter)=>{
     if (filter.comics) queryUrl=`${queryUrl}&comics=${filter.comics}`;
         
     if (filter.stories) queryUrl=`${queryUrl}&stories=${filter.stories}`;
-    console.log(queryUrl);   
+ 
     const response= await axios.get(queryUrl);
-  //  console.log(response);  
+
     return response;
 
 } 

@@ -17,10 +17,7 @@ function Menu() {
       <label for="burger-checkbox" className="burger-label"></label>
 
       <ul className="navbar-list">
-
-     
-
-     
+         
       
       <Link className="LinkTab"  to={{pathname: `/characters` , state:{}}}>
           <li className="navbar-item"><a href="/characters">CHARACTERS</a></li>
