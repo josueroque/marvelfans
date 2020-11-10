@@ -9,8 +9,7 @@ import Characters from './Characters';
 import CharacterDetail from './CharacterDetail'; 
 import Home from './Home';
 import List from './List';
-
-
+import Comics from './Comics';
 
 function App () {
  
@@ -26,6 +25,7 @@ function App () {
   return (
     <Router>
       <Switch>
+      <Route exact path='/comics' component={Comics} />
         <Route exact path='/characters' component={Characters} />
         <Route exact path='/characters/:id' component={CharacterDetail} />
         <Route exact path='/charactercomics/:id' component={List} />

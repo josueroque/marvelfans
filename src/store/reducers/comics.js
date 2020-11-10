@@ -4,7 +4,9 @@ import {
     GET_COMICS_FAILURE
 } from '../types';
 
-const initialState={comics:[],loading:false,error:false};
+const initialState={comics:[],loading:false,error:false,
+                    formats:['comic','magazine','trade paperback','hardcover','digest',
+                    'graphic novel','digital comic','infinite comic']};
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function(state=initialState,action) {

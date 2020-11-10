@@ -8,9 +8,9 @@ function Menu() {
      
       <nav className="navbar">
       <div className="logo">
-      <Link className="LinkTab"  to={{pathname: `/` , state:{}}}>
-        <img alt="Marvel" src={Logo}></img>
-      </Link> 
+        <Link className="LinkTab"  to={{pathname: `/` , state:{}}}>
+          <img alt="Marvel" src={Logo}></img>
+        </Link> 
       </div>
 
       <input type="checkbox" id="burger-checkbox" />

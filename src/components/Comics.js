@@ -1,7 +1,7 @@
 import React,{Fragment, useEffect, useState,useMemo} from 'react';
 import{useSelector,useDispatch} from 'react-redux';
 import {Grid,TextField,Button} from '@material-ui/core';
-import{getCharactersAction} from '../store/actions/characters';
+import{getComicsAction} from '../store/actions/comics';
 import CardItem from './CardItem';
 import Loader from './Loader';
 import Alert from './Alert';
@@ -9,23 +9,22 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Menu from './Menu';
 
-
-function Characters(props){ 
+function Comics(props){ 
 
     const dispatch=useDispatch();
-    const getCharacters=(filter)=>dispatch(getCharactersAction(filter));
-    const characters=useSelector(state=>state.characters.characters);
+    const getComics=(filter)=>dispatch(getComicsAction(filter));
     const stories =useSelector(state=>state.stories.stories);
     const comics =useSelector(state=>state.comics.comics);
-    const loading =useSelector(state=>state.characters.loading);
-    const error=useSelector(state=>state.characters.error);
+    const formats =useSelector(state=>state.comics.formats);
+    const loading =useSelector(state=>state.comics.loading);
+    const error=useSelector(state=>state.comics.error);
     const [name,setName]=useState(null);
     const [comic,setComic]=useState(null);
     const [story,setStory]=useState(null);
-    const [items,setItems]=useState(characters.slice(0,4));
-    
-    const storiesList ={
-        options: stories,
+    const [items,setItems]=useState(comics.slice(0,4));
+    const [format,setFormat]=useState([]);
+    const formatsList ={
+        options: formats,
         getOptionLabel: (option) => option.title,
       };
     
@@ -35,21 +34,25 @@ function Characters(props){
     };
 
     useEffect(()=>{
-        setItems(characters.slice(0,4));
-    },[characters])
+        setItems(comics.slice(0,4));
+    },[comics])
 
     useEffect(()=>{
         console.log(comic);
         let comicValue=comic ?comic.id:null;
         let storyValue=story ?story.id:null;
-        if (name||comic||story ) getCharacters({name:name,comics:comicValue,stories:storyValue});
+        if (name||comic||story ) getComics({name:name,comics:comicValue,stories:storyValue});
     },[name,comic,story])
+
+    const getFormats=()=>{
+
+    }
 
     const fetchMoreData=()=>{
         
         setTimeout(() => {
             setItems(
-             (characters.slice(0, items.length+4))
+             (comics.slice(0, items.length+4))
             );
          }, 1500);
          console.log('desde fetch');
@@ -60,7 +63,7 @@ function Characters(props){
         setStory(null);
         setName(null);
         setComic(null);
-        getCharacters({});
+        getComics({});
     }
 
     const handleChange=(event)=>{
@@ -83,15 +86,15 @@ function Characters(props){
     }
     ,[])
 
-    const comicsComponent=useMemo(()=>{
+    const formatsComponent=useMemo(()=>{
         
         return <Autocomplete
-        {...comicsList}
-        id="story"
-        value={comic}
+        {...formatsList}
+        id="format"
+        value={format}
         className="SearchText" 
         onChange={(event, newValue) => {
-        setComic(newValue);
+        setFormat(newValue);
         }}
             renderInput={(params) =>
             <TextField 
@@ -99,17 +102,16 @@ function Characters(props){
                 key={params.id}
                 type="search" 
                 variant="filled"
-                label="Search by Comic"
-                
-            
+                label="Filter by format"
+                           
             />}
         />  
-    },[comic,comics])
+    },[format,formats])
 
     const storiesComponent=useMemo(()=>{
    
         return  <Autocomplete
-                 {...storiesList}
+                 {...formatsList}
                  id="story"
                  value={story}
                  className="StorySearch"
@@ -126,8 +128,9 @@ function Characters(props){
                                                            
                         />}
                     /> 
-    },[story,stories])
+    },[])
 
+    console.log(comics);
     return (
                  
             <Fragment >
@@ -144,7 +147,7 @@ function Characters(props){
                     value={name}
                     onChange={handleChange}
                 />
-                   {comicsComponent}
+                   {formatsComponent}
                 </Grid>
                    {storiesComponent}
 
@@ -153,7 +156,7 @@ function Characters(props){
                       dataLength={items.length}
                       next={fetchMoreData}
                       hasMore={true}
-                      loader={loading===false&&items.length<characters.length?<h3 className="ItemsLoader">Loading items...</h3>:''}
+                      loader={loading===false&&items.length<comics.length?<h3 className="ItemsLoader">Loading items...</h3>:''}
              >
             <Grid className="Grid">
                 { error===true?
@@ -169,7 +172,7 @@ function Characters(props){
 
                     items.map(item=>
 
-                            <CardItem   key={item.id} values={item} itemType="Character" ></CardItem>
+                            <CardItem   key={item.id} values={item}  itemType="Comic"  ></CardItem>
                          
                     )
                  
@@ -185,4 +188,4 @@ function Characters(props){
     );
 }
 
-export default Characters;
+export default Comics;

@@ -18,6 +18,7 @@ function CardItem(props){
     },[])
 
    const handleFavorite=(event)=>{
+            
 
         let favorites2=[];
         if(localStorage.getItem("favoritesCharacters")) favorites2= JSON.parse(localStorage.getItem("favoritesCharacters"));
@@ -31,7 +32,7 @@ function CardItem(props){
         }
        
    }
-  
+  console.log(props.itemType);
        return(
            <Fragment>
               
@@ -44,7 +45,7 @@ function CardItem(props){
                                     
                                 }
 
-                            }}> 
+                    }}> 
                         <CardMedia
                             component="img"
                             alt={props.values.name}
@@ -63,7 +64,7 @@ function CardItem(props){
                         </Link> 
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
-                                {props.values.name}
+                                {props.itemType==="Character"? props.values.name:props.values.title}
                             </Typography>
                         </CardContent>
             
@@ -80,7 +81,7 @@ function CardItem(props){
 
                             }}>                            
                                 <Button size="small" color="primary"  >
-                                    COMICS
+                                    {props.itemType==="Character"? "COMICS":"CHARACTERS"}
                                 </Button>
                             </Link>
                             <Link className="Link"  to={{
