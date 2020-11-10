@@ -8,7 +8,6 @@ import Alert from './Alert';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Menu from './Menu';
 
-
 function Characters(props){ 
 
     const dispatch=useDispatch();
@@ -21,6 +20,8 @@ function Characters(props){
     const [name,setName]=useState(null);
     const [comic,setComic]=useState(null);
     const [story,setStory]=useState(null);
+//modal
+
     
     const storiesList ={
         options: stories,
@@ -33,7 +34,7 @@ function Characters(props){
     };
 
 
-        useEffect(()=>{
+    useEffect(()=>{
         console.log(comic);
         let comicValue=comic ?comic.id:null;
         let storyValue=story ?story.id:null;
@@ -92,7 +93,7 @@ function Characters(props){
     },[comic,comics])
 
     const storiesComponent=useMemo(()=>{
-
+   
         return  <Autocomplete
                  {...storiesList}
                  id="story"
@@ -115,7 +116,8 @@ function Characters(props){
 
     return (
                  
-            <Fragment>
+            <Fragment >
+      
             {memoMenu}
             <Grid className="FilterGrid">
                 <TextField 
@@ -143,7 +145,7 @@ function Characters(props){
                 {loading===true?<Loader className="Loader">  </Loader>:
                     characters.length>0? characters.map(item=>
 
-                            <CardItem   key={item.id} values={item}  ></CardItem>
+                            <CardItem   key={item.id} values={item}   ></CardItem>
                          
                     ):''
                 }

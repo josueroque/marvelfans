@@ -4,10 +4,12 @@ import{useDispatch} from 'react-redux';
 import{getStoriesAction} from '../store/actions/stories';
 import{getComicsAction} from '../store/actions/comics';
 import{getCharactersAction} from '../store/actions/characters';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Characters from './Characters';
 import CharacterDetail from './CharacterDetail'; 
 import Home from './Home';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import List from './List';
+
 
 
 function App () {
@@ -26,6 +28,8 @@ function App () {
       <Switch>
         <Route exact path='/characters' component={Characters} />
         <Route exact path='/characters/:id' component={CharacterDetail} />
+        <Route exact path='/comics/:id' component={List} />
+        <Route exact path='/stories/:id' component={List} />
         <Route exact path='/' component={Home} />
       </Switch>
     </Router>

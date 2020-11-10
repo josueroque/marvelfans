@@ -17,10 +17,11 @@ import Menu from './Menu';
     }
     ,[])
 
-  console.log(props);
+
     const backToList=()=>{
         props.history.push("/characters");
     }
+    console.log(props);
 
     return(
         <Fragment>
@@ -35,15 +36,19 @@ import Menu from './Menu';
                 <Typography gutterBottom variant="h3" component="h2">
                     {props.location.state.item.name}
                 </Typography>
-                <Typography gutterBottom variant="h5" component="h3" >
-                    Description: {props.location.state.item.description?props.location.state.item.description:"Not available"}
-                </Typography>
                 <Typography gutterBottom variant="h4" component="h4" bold>
-                    Comics:
+                    {props.location.state.listType }
                 </Typography>
-                <Typography gutterBottom variant="h4" component="h4" bold>
-                    Stories:
-                </Typography>
+                {props.location.state.listType==="Comics"?
+                    props.location.state.item.comics.items.map(item=>
+                        <div>{item.name}</div>
+                    )
+                    :
+                    props.location.state.item.stories.items.map(item=>
+                        <div>{item.name}</div>
+                    )
+                } 
+                <br />
                 <Button className="DetailButton" onClick={backToList} color="primary" variant="contained">Back to List</Button>
             </div>    
        

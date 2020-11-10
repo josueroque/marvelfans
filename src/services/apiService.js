@@ -1,12 +1,12 @@
 import axios from 'axios';
-const baseUrl ='https://gateway.marvel.com:443/v1/public/';
-const hash='a7b99f5ed0aeb877b0ef442ec312f35d';
-const ts='1';
-const apiKey='1cb3a2470c17d59344f1fca46ab0e4c9';
+const baseUrl =process.env.REACT_APP_baseUrl;
+const hash=process.env.REACT_APP_hash;
+const ts=process.env.REACT_APP_ts;
+const apiKey=process.env.REACT_APP_apiKey;
 
 export const getCharacters=async(filter)=>{
     
-    let queryUrl=`${baseUrl}characters?apikey=${apiKey}&hash=${hash}&ts=${ts}&limit=8`;
+    let queryUrl=`${baseUrl}characters?apikey=${apiKey}&hash=${hash}&ts=${ts}&limit=100`;
     
     if (filter.name) queryUrl=`${queryUrl}&nameStartsWith=${filter.name}`;
       
