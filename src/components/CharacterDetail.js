@@ -38,12 +38,7 @@ import Menu from './Menu';
                 <Typography gutterBottom variant="h5" component="h3" >
                     Description: {props.location.state.item.description?props.location.state.item.description:"Not available"}
                 </Typography>
-                <Typography gutterBottom variant="h4" component="h4" bold>
-                    Comics:
-                </Typography>
-                <Typography gutterBottom variant="h4" component="h4" bold>
-                    Stories:
-                </Typography>
+
                 <Button className="DetailButton" onClick={backToList} color="primary" variant="contained">Back to List</Button>
             </div>    
        

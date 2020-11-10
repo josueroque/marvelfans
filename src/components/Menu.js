@@ -18,12 +18,14 @@ function Menu() {
 
       <ul className="navbar-list">
          
-      
+      <Link className="LinkTab LinkHome"  to={{pathname: `/` , state:{}}}>
+          <li className="navbar-item"><a href="/">HOME</a></li>
+      </Link>   
       <Link className="LinkTab"  to={{pathname: `/characters` , state:{}}}>
           <li className="navbar-item"><a href="/characters">CHARACTERS</a></li>
       </Link>   
-          <li className="navbar-item"><a href="#quien-soy">COMICS</a></li>
-          <li className="navbar-item"><a href="#batallas">STORIES</a></li>
+          <li className="navbar-item"><a href="/comics">COMICS</a></li>
+          <li className="navbar-item"><a href="/stories">STORIES</a></li>
         
       </ul>
       </nav>

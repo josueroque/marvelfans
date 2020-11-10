@@ -72,7 +72,7 @@ function CardItem(props){
                                 <ThumbUpIcon />
                             </IconButton> 
                             <Link className="Link"  to={{
-                                pathname: `/comics/${props.values.id}` , 
+                                pathname: `/charactercomics/${props.values.id}` , 
                                 state:{  
                                     item:props.values,
                                     listType:"Comics"
@@ -84,7 +84,7 @@ function CardItem(props){
                                 </Button>
                             </Link>
                             <Link className="Link"  to={{
-                                pathname: `/stories/${props.values.id}` , 
+                                pathname: `/characterstories/${props.values.id}` , 
                                 state:{  
                                     item:props.values,
                                     listType:"Stories"

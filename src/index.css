@@ -93,6 +93,12 @@ padding: 5px;
   margin-top: -2vw ;
 }
 
+.ItemsLoader{
+  margin-left: 40vw;
+}
+.LinkHome{
+  display: none;
+}
 /* NAVBAR HEADER */
 :root {
   --max-width: 900px;
@@ -151,6 +157,22 @@ padding: 5px;
 }
 
 @media all and (max-width: 768px) {
+  .LinkHome{
+    display: initial; 
+  }
+  
+  .Grid{
+    grid-template-columns: 1fr 1fr;
+  }
+  .GridDetail{
+    grid-template-columns: 1fr;
+  }
+  .logo{
+    display: none;
+  }
+  .DetailButton{
+    margin-left: 35vw !important;
+  }
   .FilterGrid{
     margin-top: 15vw;
   }
@@ -223,3 +245,9 @@ padding: 5px;
       0 .5em 0 0 gray;
   }  
 }/*  NAVBAR END */
+
+@media all and (max-width: 480px) {
+  .Grid{
+    grid-template-columns: 1fr;
+  }
+}

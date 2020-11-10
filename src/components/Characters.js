@@ -6,7 +6,9 @@ import CardItem from './CardItem';
 import Loader from './Loader';
 import Alert from './Alert';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import InfiniteScroll from "react-infinite-scroll-component";
 import Menu from './Menu';
+
 
 function Characters(props){ 
 
@@ -20,8 +22,7 @@ function Characters(props){
     const [name,setName]=useState(null);
     const [comic,setComic]=useState(null);
     const [story,setStory]=useState(null);
-//modal
-
+    const [items,setItems]=useState(characters.slice(0,4));
     
     const storiesList ={
         options: stories,
@@ -33,6 +34,9 @@ function Characters(props){
         getOptionLabel: (option) => option.title,
     };
 
+    useEffect(()=>{
+        setItems(characters.slice(0,4));
+    },[characters])
 
     useEffect(()=>{
         console.log(comic);
@@ -41,6 +45,16 @@ function Characters(props){
         if (name||comic||story ) getCharacters({name:name,comics:comicValue,stories:storyValue});
     },[name,comic,story])
 
+    const fetchMoreData=()=>{
+        
+        setTimeout(() => {
+            setItems(
+             (characters.slice(0, items.length+4))
+            );
+         }, 1500);
+         console.log('desde fetch');
+         console.log(items);
+    };
 
     const reset=()=>{
         setStory(null);
@@ -135,22 +149,36 @@ function Characters(props){
                    {storiesComponent}
 
              <Button className="ClearButton" onClick={reset} color="primary" variant="contained">Clear </Button>
-            <Grid className="Grid" >
+             <InfiniteScroll
+                      dataLength={items.length}
+                      next={fetchMoreData}
+                      hasMore={true}
+                      loader={loading===false&&items.length<characters.length?<h3 className="ItemsLoader">Loading items...</h3>:''}
+             >
+            <Grid className="Grid">
                 { error===true?
                         <Alert className="Alert" severity='error'>
                             {'Error loading data!'}
                         </Alert>
                         :''  
                 }
+
                 {loading===true?<Loader className="Loader">  </Loader>:
-                    characters.length>0? characters.map(item=>
+
+                    items.length>0?
+
+                    items.map(item=>
 
                             <CardItem   key={item.id} values={item}   ></CardItem>
                          
-                    ):''
+                    )
+                 
+                    :''
+                  
                 }
+                 
             </Grid>
-            
+            </InfiniteScroll>
             </Fragment>
             
 

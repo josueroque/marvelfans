@@ -2,7 +2,7 @@ import React, {Fragment, useEffect,useMemo } from 'react';
 import{Grid,Typography,Button } from '@material-ui/core';
 import Menu from './Menu';
 
- function CharacterDetail(props){
+ function List(props){
    
      useEffect(()=>{
   
@@ -60,4 +60,4 @@ import Menu from './Menu';
 
  }   
 
- export default CharacterDetail;
+ export default List;
